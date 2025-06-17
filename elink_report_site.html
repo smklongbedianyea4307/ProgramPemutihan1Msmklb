@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borang Laporan Program Pemutihan 1M - SMK Long Bedian</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- JS PDF & HTML2Canvas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">SMK Long Bedian</h1>
+            <ul class="nav-links">
+                <li><a href="#">Laman Utama</a></li>
+                <li><a href="#borang">Borang Laporan</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header class="header">
+            <div class="logo-container">
+                <img src="images/logo-sekolah.jpg" alt="Logo SMK Long Bedian" class="logo">
+                <img src="images/logo-ts25.png" alt="Logo TS25" class="logo">
+            </div>
+            <h1>Borang Laporan Program Pemutihan 1M</h1>
+            <h2>SMK Long Bedian</h2>
+        </header>
+
+        <form id="reportForm">
+            <section id="borang" class="form-section">
+                <h3>Butiran Asas Program</h3>
+                <label for="guruName">Nama Guru / Mentor Kumpulan</label>
+                <input type="text" id="guruName" name="guruName" required>
+
+                <label for="activityTitle">Tajuk Aktiviti</label>
+                <input type="text" id="activityTitle" name="activityTitle" required>
+
+                <label for="dateTime">Tarikh / Waktu Mula</label>
+                <input type="datetime-local" id="dateTime" name="dateTime" required>
+
+                <label for="refleksi">Refleksi / Impak</label>
+                <textarea id="refleksi" name="refleksi" rows="4" placeholder="Nyatakan refleksi atau impak program..." required></textarea>
+            </section>
+
+            <section class="form-section">
+                <h3>Kehadiran Murid</h3>
+                <table id="hadirTable">
+                    <thead>
+                        <tr>
+                            <th>Bil.</th>
+                            <th>Nama Murid</th>
+                            <th>Kelas</th>
+                            <th>Tindakan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="bil">1</td>
+                            <td><input type="text" placeholder="Nama penuh murid" required></td>
+                            <td><input type="text" placeholder="Contoh: 5 Sains" required></td>
+                            <td><button type="button" class="delete-row-btn" onclick="deleteRow(this, 'hadirTable')">Padam</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" class="add-row-btn" onclick="addRow('hadirTable')">+ Tambah Murid</button>
+            </section>
+
+            <section class="form-section">
+                <h3>Murid Tidak Hadir</h3>
+                <table id="tidakHadirTable">
+                    <thead>
+                        <tr>
+                            <th>Bil.</th>
+                            <th>Nama Murid</th>
+                            <th>Kelas</th>
+                            <th>Tindakan</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <button type="button" class="add-row-btn" onclick="addRow('tidakHadirTable')">+ Tambah Murid</button>
+            </section>
+
+            <section class="form-section">
+                <h3>Gambar Aktiviti (4 Keping)</h3>
+                <div class="image-upload-grid">
+                    <div><label>Gambar 1<input type="file" id="image1" accept="image/*" required></label></div>
+                    <div><label>Gambar 2<input type="file" id="image2" accept="image/*" required></label></div>
+                    <div><label>Gambar 3<input type="file" id="image3" accept="image/*" required></label></div>
+                    <div><label>Gambar 4<input type="file" id="image4" accept="image/*" required></label></div>
+                </div>
+            </section>
+
+            <button type="submit" id="submitBtn" class="submit-btn">Jana Laporan PDF</button>
+        </form>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 SMK Long Bedian. Semua Hak Cipta Terpelihara.</p>
+    </footer>
+
+    <!-- JS -->
+    <script src="js/script.js"></script>
+</body>
+</html>
